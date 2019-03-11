@@ -20,10 +20,14 @@ namespace Win8StyleVolumeBar
 		int idleTimer;
 		double visibility = 0d;
 
-		public VolumeBar()
+		public VolumeBar(int? color)
 		{
 			InitializeComponent();
 			playbackDevice = new CoreAudioController().DefaultPlaybackDevice;
+			if (color.HasValue)
+			{
+				volFG.BackColor = Color.FromArgb(color.Value);
+			}
 		}
 
 		private void VolumeBar_Load(object sender, EventArgs e)
