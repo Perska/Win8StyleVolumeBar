@@ -28,6 +28,15 @@ namespace Win8StyleVolumeBar
 			{
 				volFG.BackColor = Color.FromArgb(color.Value);
 			}
+			FormClosing += VolumeBar_FormClosing;
+		}
+
+		private void VolumeBar_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (e.CloseReason == CloseReason.UserClosing)
+			{
+				e.Cancel = true;
+			}
 		}
 
 		private void VolumeBar_Load(object sender, EventArgs e)
