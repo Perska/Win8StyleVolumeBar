@@ -31,7 +31,6 @@ namespace Win8StyleVolumeBar
 			volFG.Location = new Point(0, 80 - (int)(playbackDevice.Volume / 100 * 80));
 			VolTxt.Text = $"{playbackDevice.Volume}";
 			lastVolume = playbackDevice.Volume;
-
 			Location = new Point(32, 32);
 		}
 
@@ -55,6 +54,21 @@ namespace Win8StyleVolumeBar
 					visibility = 0;
 				}
 				Opacity = visibility;
+			}
+			if ((ClientSize.Width != 32) || (ClientSize.Height != 128))
+			{
+				ClientSize = new System.Drawing.Size(32, 128);
+				MaximizeBox = false;
+				MaximumSize = new System.Drawing.Size(32, 128);
+				MinimizeBox = false;
+				MinimumSize = new System.Drawing.Size(32, 128);
+				WindowState = FormWindowState.Normal;
+				
+			}
+			if ((Location.X != 32) || (Location.Y != 32))
+			{
+				Location = new System.Drawing.Point(32, 32);
+				WindowState = FormWindowState.Normal;
 			}
 		}
 	}
