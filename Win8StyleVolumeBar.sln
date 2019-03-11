@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.438
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win8StyleVolumeBar", "Win8StyleVolumeBar\Win8StyleVolumeBar.csproj", "{657C73F9-AE5A-4D39-9AB1-35058A64F85E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{657C73F9-AE5A-4D39-9AB1-35058A64F85E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{657C73F9-AE5A-4D39-9AB1-35058A64F85E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{657C73F9-AE5A-4D39-9AB1-35058A64F85E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{657C73F9-AE5A-4D39-9AB1-35058A64F85E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D17D1AC5-B433-4446-9A40-850ECD52870C}
+	EndGlobalSection
+EndGlobal
