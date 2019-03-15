@@ -20,6 +20,28 @@ namespace Win8StyleVolumeBar
 		int idleTimer;
 		double visibility = 0d;
 
+		private const int WM_MOUSEACTIVATE = 0x0021;
+		private const int MA_NOACTIVATEANDEAT = 0x0004;
+
+		protected override bool ShowWithoutActivation
+		{
+			get { return true; }
+		}
+
+		protected override CreateParams CreateParams
+		{
+			get
+			{
+				CreateParams baseParams = base.CreateParams;
+
+				const int WS_EX_NOACTIVATE = 0x08000000;
+				const int WS_EX_TOOLWINDOW = 0x00000080;
+				baseParams.ExStyle |= (int)(WS_EX_NOACTIVATE | WS_EX_TOOLWINDOW);
+
+				return baseParams;
+			}
+		}
+
 		public VolumeBar(int? color)
 		{
 			InitializeComponent();
@@ -45,6 +67,7 @@ namespace Win8StyleVolumeBar
 			VolTxt.Text = $"{playbackDevice.Volume}";
 			lastVolume = playbackDevice.Volume;
 			Location = new Point(32, 32);
+			
 		}
 
 		private void PollVolume_Tick(object sender, EventArgs e)
