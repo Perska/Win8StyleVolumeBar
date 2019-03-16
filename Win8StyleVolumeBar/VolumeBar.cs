@@ -67,7 +67,7 @@ namespace Win8StyleVolumeBar
 			VolTxt.Text = $"{playbackDevice.Volume}";
 			lastVolume = playbackDevice.Volume;
 			Location = new Point(32, 32);
-			
+			volQuitterIco.Icon = SystemIcons.Application;
 		}
 
 		private void PollVolume_Tick(object sender, EventArgs e)
@@ -93,19 +93,39 @@ namespace Win8StyleVolumeBar
 			}
 			if ((ClientSize.Width != 32) || (ClientSize.Height != 128))
 			{
-				ClientSize = new System.Drawing.Size(32, 128);
+				ClientSize = new Size(32, 128);
 				MaximizeBox = false;
-				MaximumSize = new System.Drawing.Size(32, 128);
+				MaximumSize = new Size(32, 128);
 				MinimizeBox = false;
-				MinimumSize = new System.Drawing.Size(32, 128);
+				MinimumSize = new Size(32, 128);
 				WindowState = FormWindowState.Normal;
 				
 			}
 			if ((Location.X != 32) || (Location.Y != 32))
 			{
-				Location = new System.Drawing.Point(32, 32);
+				Location = new Point(32, 32);
 				WindowState = FormWindowState.Normal;
 			}
+		}
+
+		private void startStopToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (PollVolume.Enabled)
+			{
+				PollVolume.Stop();
+				Opacity = 0;
+				visibility = 0;
+				lastVolume = -1;
+			}
+			else
+			{
+				PollVolume.Start();
+			}
+		}
+
+		private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Close();
 		}
 	}
 }

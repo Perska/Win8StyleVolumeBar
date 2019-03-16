@@ -31,11 +31,16 @@
 			this.components = new System.ComponentModel.Container();
 			this.volBG = new System.Windows.Forms.Panel();
 			this.volFG = new System.Windows.Forms.Panel();
+			this.volDot = new System.Windows.Forms.Panel();
 			this.VolTxt = new System.Windows.Forms.Label();
 			this.PollVolume = new System.Windows.Forms.Timer(this.components);
-			this.volDot = new System.Windows.Forms.Panel();
+			this.volQuitterIco = new System.Windows.Forms.NotifyIcon(this.components);
+			this.volQuitter = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.startStopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.volBG.SuspendLayout();
 			this.volFG.SuspendLayout();
+			this.volQuitter.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// volBG
@@ -57,6 +62,14 @@
 			this.volFG.Size = new System.Drawing.Size(14, 94);
 			this.volFG.TabIndex = 0;
 			// 
+			// volDot
+			// 
+			this.volDot.BackColor = System.Drawing.Color.Silver;
+			this.volDot.Location = new System.Drawing.Point(0, 0);
+			this.volDot.Name = "volDot";
+			this.volDot.Size = new System.Drawing.Size(14, 14);
+			this.volDot.TabIndex = 0;
+			// 
 			// VolTxt
 			// 
 			this.VolTxt.BackColor = System.Drawing.Color.Transparent;
@@ -74,13 +87,33 @@
 			this.PollVolume.Interval = 50;
 			this.PollVolume.Tick += new System.EventHandler(this.PollVolume_Tick);
 			// 
-			// volDot
+			// volQuitterIco
 			// 
-			this.volDot.BackColor = System.Drawing.Color.Silver;
-			this.volDot.Location = new System.Drawing.Point(0, 0);
-			this.volDot.Name = "volDot";
-			this.volDot.Size = new System.Drawing.Size(14, 14);
-			this.volDot.TabIndex = 0;
+			this.volQuitterIco.ContextMenuStrip = this.volQuitter;
+			this.volQuitterIco.Text = "Win8StyleVolumeBar";
+			this.volQuitterIco.Visible = true;
+			// 
+			// volQuitter
+			// 
+			this.volQuitter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startStopToolStripMenuItem,
+            this.quitToolStripMenuItem});
+			this.volQuitter.Name = "volQuitter";
+			this.volQuitter.Size = new System.Drawing.Size(181, 70);
+			// 
+			// startStopToolStripMenuItem
+			// 
+			this.startStopToolStripMenuItem.Name = "startStopToolStripMenuItem";
+			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.startStopToolStripMenuItem.Text = "Start/Stop";
+			this.startStopToolStripMenuItem.Click += new System.EventHandler(this.startStopToolStripMenuItem_Click);
+			// 
+			// quitToolStripMenuItem
+			// 
+			this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
+			this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.quitToolStripMenuItem.Text = "Quit";
+			this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
 			// 
 			// VolumeBar
 			// 
@@ -106,6 +139,7 @@
 			this.Load += new System.EventHandler(this.VolumeBar_Load);
 			this.volBG.ResumeLayout(false);
 			this.volFG.ResumeLayout(false);
+			this.volQuitter.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
@@ -117,6 +151,10 @@
         private System.Windows.Forms.Label VolTxt;
         private System.Windows.Forms.Timer PollVolume;
 		private System.Windows.Forms.Panel volDot;
+		private System.Windows.Forms.NotifyIcon volQuitterIco;
+		private System.Windows.Forms.ContextMenuStrip volQuitter;
+		private System.Windows.Forms.ToolStripMenuItem startStopToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
 	}
 }
 
