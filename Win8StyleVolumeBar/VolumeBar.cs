@@ -16,6 +16,9 @@ namespace Win8StyleVolumeBar
 	{
 		CoreAudioDevice playbackDevice;
 		double lastVolume = -1;
+		bool muted;
+
+		Color BarColor;
 
 		int idleTimer;
 		double visibility = 0d;
@@ -46,9 +49,11 @@ namespace Win8StyleVolumeBar
 		{
 			InitializeComponent();
 			playbackDevice = new CoreAudioController().DefaultPlaybackDevice;
+			BarColor = Color.Maroon;
 			if (color.HasValue)
 			{
 				volFG.BackColor = Color.FromArgb(color.Value);
+				BarColor = volFG.BackColor;
 			}
 			FormClosing += VolumeBar_FormClosing;
 		}
@@ -66,21 +71,39 @@ namespace Win8StyleVolumeBar
 			volFG.Location = new Point(0, 80 - (int)(playbackDevice.Volume / 100 * 80));
 			VolTxt.Text = $"{playbackDevice.Volume}";
 			lastVolume = playbackDevice.Volume;
+			muted = playbackDevice.IsMuted;
 			Location = new Point(32, 32);
 			volQuitterIco.Icon = SystemIcons.Application;
 		}
 
 		private void PollVolume_Tick(object sender, EventArgs e)
 		{
-			volFG.Location = new Point(0, 80 - (int)(playbackDevice.Volume / 100 * 80));
-			VolTxt.Text = $"{playbackDevice.Volume}";
-			idleTimer++;
-			if (lastVolume != playbackDevice.Volume)
+			idleTimer += muted ? 4 : 1;
+			
+			if ((lastVolume != playbackDevice.Volume) || (muted != playbackDevice.IsMuted))
 			{
+
 				lastVolume = playbackDevice.Volume;
+				muted = playbackDevice.IsMuted;
 				idleTimer = 0;
-				Opacity = 1;
 				visibility = 1;
+				volFG.Location = new Point(0, 80 - (int)(playbackDevice.Volume / 100 * 80));
+				VolTxt.Text = $"{playbackDevice.Volume}";
+				if (muted)
+				{
+					byte dColor = (byte)((BarColor.R + BarColor.G + BarColor.B) / 9);
+					volFG.BackColor = Color.FromArgb(dColor, dColor, dColor);
+					VolTxt.Text = $"({VolTxt.Text})";
+					VolTxt.ForeColor = Color.DarkSlateGray;
+					volDot.BackColor = Color.DarkSlateGray;
+				}
+				else
+				{
+					volFG.BackColor = BarColor;
+					VolTxt.ForeColor = Color.White;
+					volDot.BackColor = Color.Silver;
+				}
+				Opacity = 1;
 			}
 			if (idleTimer > 40)
 			{
