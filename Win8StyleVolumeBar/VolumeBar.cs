@@ -64,6 +64,7 @@ namespace Win8StyleVolumeBar
 			{
 				e.Cancel = true;
 			}
+
 		}
 
 		private void VolumeBar_Load(object sender, EventArgs e)
@@ -148,7 +149,8 @@ namespace Win8StyleVolumeBar
 
 		private void quitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			Close();
+			Application.Exit();
+			
 		}
 	}
 }
