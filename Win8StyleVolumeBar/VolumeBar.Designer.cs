@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VolumeBar));
 			this.volBG = new System.Windows.Forms.Panel();
 			this.volFG = new System.Windows.Forms.Panel();
 			this.volDot = new System.Windows.Forms.Panel();
@@ -99,19 +100,19 @@
             this.startStopToolStripMenuItem,
             this.quitToolStripMenuItem});
 			this.volQuitter.Name = "volQuitter";
-			this.volQuitter.Size = new System.Drawing.Size(181, 70);
+			this.volQuitter.Size = new System.Drawing.Size(128, 48);
 			// 
 			// startStopToolStripMenuItem
 			// 
 			this.startStopToolStripMenuItem.Name = "startStopToolStripMenuItem";
-			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.startStopToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
 			this.startStopToolStripMenuItem.Text = "Start/Stop";
 			this.startStopToolStripMenuItem.Click += new System.EventHandler(this.startStopToolStripMenuItem_Click);
 			// 
 			// quitToolStripMenuItem
 			// 
 			this.quitToolStripMenuItem.Name = "quitToolStripMenuItem";
-			this.quitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.quitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
 			this.quitToolStripMenuItem.Text = "Quit";
 			this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
 			// 
@@ -124,6 +125,7 @@
 			this.Controls.Add(this.VolTxt);
 			this.Controls.Add(this.volBG);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Location = new System.Drawing.Point(32, 32);
 			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(32, 128);

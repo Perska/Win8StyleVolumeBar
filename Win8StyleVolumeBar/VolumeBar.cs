@@ -74,7 +74,7 @@ namespace Win8StyleVolumeBar
 			lastVolume = playbackDevice.Volume;
 			muted = playbackDevice.IsMuted;
 			Location = new Point(32, 32);
-			volQuitterIco.Icon = SystemIcons.Application;
+			volQuitterIco.Icon = Icon;
 		}
 
 		private void PollVolume_Tick(object sender, EventArgs e)
