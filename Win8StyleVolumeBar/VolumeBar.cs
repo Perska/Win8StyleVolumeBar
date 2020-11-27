@@ -15,6 +15,7 @@ namespace Win8StyleVolumeBar
 	public partial class VolumeBar : Form
 	{
 		CoreAudioDevice playbackDevice;
+		CoreAudioController controller;
 		double lastVolume = -1;
 		bool muted;
 
@@ -48,7 +49,8 @@ namespace Win8StyleVolumeBar
 		public VolumeBar(int? color)
 		{
 			InitializeComponent();
-			playbackDevice = new CoreAudioController().DefaultPlaybackDevice;
+			controller = new CoreAudioController();
+			playbackDevice = controller.DefaultPlaybackDevice;
 			BarColor = Color.Maroon;
 			if (color.HasValue)
 			{
@@ -80,7 +82,7 @@ namespace Win8StyleVolumeBar
 		private void PollVolume_Tick(object sender, EventArgs e)
 		{
 			idleTimer += muted ? 4 : 1;
-			
+
 			if ((lastVolume != playbackDevice.Volume) || (muted != playbackDevice.IsMuted))
 			{
 
@@ -112,6 +114,7 @@ namespace Win8StyleVolumeBar
 				if (visibility < 0)
 				{
 					visibility = 0;
+					playbackDevice = controller.DefaultPlaybackDevice;
 				}
 				Opacity = visibility;
 			}
@@ -130,6 +133,8 @@ namespace Win8StyleVolumeBar
 				Location = new Point(32, 32);
 				WindowState = FormWindowState.Normal;
 			}
+			TopMost = false;
+			TopMost = true;
 		}
 
 		private void startStopToolStripMenuItem_Click(object sender, EventArgs e)
